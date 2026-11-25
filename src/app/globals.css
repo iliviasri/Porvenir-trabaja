@@ -1,0 +1,41 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Identidad PORVENIR TRABAJA: verde petróleo (confianza) + ámbar cuero (calzado/artesanía) */
+    --background: 40 33% 98%;
+    --foreground: 200 30% 12%;
+    --card: 0 0% 100%;
+    --card-foreground: 200 30% 12%;
+    --primary: 190 75% 24%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 190 30% 94%;
+    --secondary-foreground: 190 75% 20%;
+    --accent: 32 90% 52%;
+    --accent-foreground: 30 60% 10%;
+    --muted: 40 20% 94%;
+    --muted-foreground: 200 12% 36%;
+    --destructive: 0 72% 42%;
+    --destructive-foreground: 0 0% 100%;
+    --success: 145 63% 30%;
+    --success-foreground: 0 0% 100%;
+    --border: 200 15% 86%;
+    --input: 200 15% 80%;
+    --ring: 190 75% 30%;
+  }
+  * { @apply border-border; }
+  html { font-size: 17px; scroll-behavior: smooth; }
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    line-height: 1.55;
+  }
+  h1, h2, h3 { @apply font-semibold tracking-tight; }
+  :focus-visible { @apply outline-none ring-2 ring-ring ring-offset-2; }
+}
+
+@layer components {
+  .page-container { @apply container py-8 md:py-10; }
+}
