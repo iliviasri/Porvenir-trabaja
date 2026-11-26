@@ -89,9 +89,9 @@ export function CvStudio({ initial, caps }: { initial: Draft; caps: Caps }) {
           ) : (
             <Alert variant="info" className="w-full">La <strong>transcripción de voz no está disponible</strong> en este entorno (falta configurar el servicio). Puedes escribir tu experiencia.</Alert>
           )}
-          {/* <Button type="button" onClick={extract} disabled={busy !== null || text.trim().length < 10}>
+          { <Button type="button" onClick={extract} disabled={busy !== null || text.trim().length < 10}>
             {busy === "extract" ? <Loader2 className="animate-spin" /> : <Wand2 />} Organizar mis datos
-          </Button> */}
+          </Button> }
         </div>
         {busy === "transcribe" && <p className="flex items-center gap-2 text-sm text-muted-foreground"><Loader2 className="size-4 animate-spin" /> Transcribiendo audio…</p>}
         {!caps.llm && <p className="text-sm text-muted-foreground">La IA de lenguaje no está configurada: se detectarán habilidades por palabras clave y el resto lo completas tú.</p>}

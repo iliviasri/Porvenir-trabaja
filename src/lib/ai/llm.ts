@@ -51,13 +51,18 @@ export async function llmComplete(opts: { system: string; messages: LLMMessage[]
         messages: [{ role: "system", content: opts.system }, ...opts.messages],
       }),
     });
-    if (!res.ok) throw new Error(`LLM ${res.status}`);
+    if (!res.ok) {
+      const errBody = await res.text();
+      console.error("DETALLE ERROR LLM:", res.status, `${base}/chat/completions`, process.env.LLM_MODEL, errBody);
+      throw new Error(`LLM ${res.status}`);
+    }
     const json = (await res.json()) as { choices?: { message?: { content?: string } }[] };
     return (json.choices?.[0]?.message?.content ?? "").trim();
   } finally {
     clearTimeout(timer);
   }
 }
+
 
 /** Extrae el primer objeto JSON de una respuesta (tolera texto o bloques ``` alrededor). */
 export function extractJson<T = unknown>(text: string): T | null {
